@@ -28,24 +28,9 @@ namespace Microsoft.VisualStudio.SlowCheetah.VS
         internal void Initialize(AdvancedOptionsDialogPage advancedOptionsPage)
         {
             this.advancedOptionsPage = advancedOptionsPage;
+            this.advancedOptionsDialogPageBindingSource.DataSource = advancedOptionsPage;
             this.PreviewToolPathTextbox.Text = advancedOptionsPage.PreviewToolExecutablePath;
             this.PreviewToolCommandLineTextbox.Text = advancedOptionsPage.PreviewToolCommandLine;
-        }
-
-        private void PreviewToolPathTextbox_Leave(object sender, System.EventArgs e)
-        {
-            if (this.advancedOptionsPage != null)
-            {
-                this.advancedOptionsPage.PreviewToolExecutablePath = this.PreviewToolPathTextbox.Text;
-            }
-        }
-
-        private void PreviewToolCommandLineTextbox_Leave(object sender, System.EventArgs e)
-        {
-            if (this.advancedOptionsPage != null)
-            {
-                this.advancedOptionsPage.PreviewToolCommandLine = this.PreviewToolCommandLineTextbox.Text;
-            }
         }
 
         private void OpenToolFileDialogButton_Click(object sender, System.EventArgs e)

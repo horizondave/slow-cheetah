@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdvancedOptionsUserControl));
+            this.components = new System.ComponentModel.Container();
+            this.advancedOptionsDialogPageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AdvancedGroupBox = new System.Windows.Forms.GroupBox();
             this.PreviewToolNameLabel = new System.Windows.Forms.Label();
             this.PreviewToolPathTextbox = new System.Windows.Forms.TextBox();
@@ -37,8 +39,14 @@
             this.PreviewToolCommandLineTextbox = new System.Windows.Forms.TextBox();
             this.CommandLineExplanationLabel = new System.Windows.Forms.Label();
             this.OpenToolFileDialog = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedOptionsDialogPageBindingSource)).BeginInit();
             this.AdvancedGroupBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // advancedOptionsDialogPageBindingSource
+            // 
+            // This will be set in the Initialize method
+            this.advancedOptionsDialogPageBindingSource.DataSource = null;
             // 
             // AdvancedGroupBox
             // 
@@ -59,9 +67,9 @@
             // 
             // PreviewToolPathTextbox
             // 
+            this.PreviewToolPathTextbox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.advancedOptionsDialogPageBindingSource, "PreviewToolExecutablePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.PreviewToolPathTextbox, "PreviewToolPathTextbox");
             this.PreviewToolPathTextbox.Name = "PreviewToolPathTextbox";
-            this.PreviewToolPathTextbox.Leave += new System.EventHandler(this.PreviewToolPathTextbox_Leave);
             // 
             // OpenToolFileDialogButton
             // 
@@ -77,9 +85,9 @@
             // 
             // PreviewToolCommandLineTextbox
             // 
+            this.PreviewToolCommandLineTextbox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.advancedOptionsDialogPageBindingSource, "PreviewToolCommandLine", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.PreviewToolCommandLineTextbox, "PreviewToolCommandLineTextbox");
             this.PreviewToolCommandLineTextbox.Name = "PreviewToolCommandLineTextbox";
-            this.PreviewToolCommandLineTextbox.Leave += new System.EventHandler(this.PreviewToolCommandLineTextbox_Leave);
             // 
             // CommandLineExplanationLabel
             // 
@@ -92,6 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.AdvancedGroupBox);
             this.Name = "AdvancedOptionsUserControl";
+            ((System.ComponentModel.ISupportInitialize)(this.advancedOptionsDialogPageBindingSource)).EndInit();
             this.AdvancedGroupBox.ResumeLayout(false);
             this.AdvancedGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -109,5 +118,6 @@
         private System.Windows.Forms.Button OpenToolFileDialogButton;
         private System.Windows.Forms.Label CommandLineExplanationLabel;
         private System.Windows.Forms.OpenFileDialog OpenToolFileDialog;
+        private System.Windows.Forms.BindingSource advancedOptionsDialogPageBindingSource;
     }
 }
